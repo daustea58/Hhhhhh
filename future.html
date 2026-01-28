@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masa Depan 💙</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="page-future">
+    
+    <div class="music-control" id="musicControl">
+        <button id="musicToggle" class="music-btn" data-testid="music-toggle-btn">
+            <span id="musicIcon">🔊</span>
+        </button>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" data-testid="nav-home">💙 Lixie</a>
+            <div class="nav-links">
+                <a href="about.html" class="nav-link" data-testid="nav-about">Tentang</a>
+                <a href="story.html" class="nav-link" data-testid="nav-story">Cerita</a>
+                <a href="letter.html" class="nav-link" data-testid="nav-letter">Surat</a>
+                <a href="future.html" class="nav-link active" data-testid="nav-future">Masa Depan</a>
+                <a href="fun.html" class="nav-link" data-testid="nav-fun">Fun</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="content-wrapper" data-testid="future-content">
+            <div class="page-header fade-in">
+                <h1 class="page-title">Masa Depan Kita</h1>
+                <p class="page-subtitle">Impian yang akan kita wujudkan bersama</p>
+            </div>
+
+            <div class="future-card fade-in-delay">
+                <div class="future-content">
+                    <p class="future-text">
+                        Aku bermimpi tentang hari-hari bersama kamu.<br>
+                        Hari di mana kita bangun di samping satu sama lain,<br>
+                        minum kopi pagi sambil ngobrol hal-hal kecil.
+                    </p>
+                    <p class="future-text">
+                        Aku bayangkan kita jalan-jalan ke tempat baru,<br>
+                        coba makanan yang belum pernah kita coba,<br>
+                        atau cuma duduk diam sambil nikmatin waktu bersama.
+                    </p>
+                    <p class="future-text">
+                        Aku tahu nggak semua akan sempurna.<br>
+                        Akan ada hari-hari sulit, akan ada pertengkaran.<br>
+                        Tapi aku percaya kita bisa melewati semuanya.
+                    </p>
+                    <p class="future-text">
+                        Karena yang penting bukan nggak ada masalah,<br>
+                        tapi bagaimana kita hadapi masalah itu bersama.
+                    </p>
+                    <p class="future-text">
+                        Aku mau kita terus tumbuh bersama,<br>
+                        saling mendukung, saling menguatkan.<br>
+                        Sampai kita tua nanti, dan masih bisa ketawa bareng.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mood-section fade-in-delay">
+                <h2 class="mood-title">Lagi ngerasa apa sekarang?</h2>
+                <div class="mood-buttons">
+                    <button class="mood-btn" onclick="selectMood('tenang')" data-testid="mood-tenang">Tenang 🤍</button>
+                    <button class="mood-btn" onclick="selectMood('capek')" data-testid="mood-capek">Capek 😮‍💨</button>
+                    <button class="mood-btn" onclick="selectMood('kangen')" data-testid="mood-kangen">Kangen 💙</button>
+                </div>
+                <div id="moodMessage" class="mood-message" data-testid="mood-message"></div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn-secondary" onclick="navigateWithTransition('letter.html')" data-testid="btn-back">
+                    ← Kembali
+                </button>
+                <button class="btn-primary" onclick="navigateWithTransition('fun.html')" data-testid="btn-next">
+                    Main Yuk →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p class="loading-text" id="loadingText">Memuat...</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/music.js"></script>
+    <script src="assets/js/transition.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            continueMusic();
+        });
+
+        const moodMessages = {
+            tenang: "Aku senang kamu lagi tenang. Nikmatin momen ini, ya. Kamu pantas bahagia dan damai. Aku akan selalu ada buat jaga ketenangan kamu. 🤍",
+            capek: "Aku tahu kamu lagi capek. Istirahat dulu ya, jangan dipaksa. Aku di sini, dan aku akan nemenin kamu. Kamu nggak sendirian. 😮‍💨",
+            kangen: "Aku juga kangen kamu, sangat. Meskipun nggak bisa ketemu sekarang, kamu selalu ada di pikiran aku. Segera kita ketemu lagi. 💙"
+        };
+
+        const moodColors = {
+            tenang: { bg: 'linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%)', text: '#006064' },
+            capek: { bg: 'linear-gradient(135deg, #ede7f6 0%, #d1c4e9 100%)', text: '#4a148c' },
+            kangen: { bg: 'linear-gradient(135deg, #e3f2fd 0%, #90caf9 100%)', text: '#0d47a1' }
+        };
+
+        function selectMood(mood) {
+            const messageDiv = document.getElementById('moodMessage');
+            messageDiv.textContent = moodMessages[mood];
+            messageDiv.style.display = 'block';
+            messageDiv.style.background = moodColors[mood].bg;
+            messageDiv.style.color = moodColors[mood].text;
+            
+            document.querySelectorAll('.mood-btn').forEach(btn => {
+                btn.style.opacity = '0.5';
+            });
+            event.target.style.opacity = '1';
+            
+            setTimeout(() => {
+                messageDiv.style.opacity = '1';
+            }, 100);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerita Kita 💙</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="page-story">
+    
+    <div class="music-control" id="musicControl">
+        <button id="musicToggle" class="music-btn" data-testid="music-toggle-btn">
+            <span id="musicIcon">🔊</span>
+        </button>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" data-testid="nav-home">💙 Lixie</a>
+            <div class="nav-links">
+                <a href="about.html" class="nav-link" data-testid="nav-about">Tentang</a>
+                <a href="story.html" class="nav-link active" data-testid="nav-story">Cerita</a>
+                <a href="letter.html" class="nav-link" data-testid="nav-letter">Surat</a>
+                <a href="future.html" class="nav-link" data-testid="nav-future">Masa Depan</a>
+                <a href="fun.html" class="nav-link" data-testid="nav-fun">Fun</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="content-wrapper" data-testid="story-content">
+            <div class="page-header fade-in">
+                <h1 class="page-title">Cerita Kita</h1>
+                <p class="page-subtitle">Dari obrolan sederhana, hingga jadi kenyataan</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item scroll-fade" data-testid="timeline-item-1">
+                    <div class="timeline-content">
+                        <p class="timeline-text">
+                            Pertama kali aku kenal kamu,<br>
+                            aku sama sekali nggak nyangka kalau kita bisa sedekat ini.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item scroll-fade" data-testid="timeline-item-2">
+                    <div class="timeline-content">
+                        <p class="timeline-text">
+                            Awalnya cuma hal kecil,<br>
+                            kita ngobrol karena kamu nanya…<br>
+                            <strong>kenapa nama Facebook aku aneh.</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item scroll-fade" data-testid="timeline-item-3">
+                    <div class="timeline-content">
+                        <p class="timeline-text">
+                            Dari obrolan yang sederhana itu,<br>
+                            pelan-pelan aku mulai nyaman.<br>
+                            Dan tanpa rencana yang muluk,<br>
+                            kita malah jadian karena kamu<br>
+                            <strong>nggak mau hubungan ini cuma di-HTS-in.</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item timeline-highlight scroll-fade" data-testid="timeline-date-1">
+                    <div class="timeline-content">
+                        <div class="timeline-date">📅 22 Desember 2024</div>
+                        <p class="timeline-text">hari di mana semuanya berubah.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item timeline-highlight scroll-fade" data-testid="timeline-date-2">
+                    <div class="timeline-content">
+                        <div class="timeline-date">📍 06 Juni</div>
+                        <p class="timeline-text">hari pertama kita ketemu.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item scroll-fade" data-testid="timeline-item-4">
+                    <div class="timeline-content">
+                        <p class="timeline-text">
+                            Jujur, aku grogi banget.<br>
+                            Tanganku dingin, kepala penuh pikiran.<br>
+                            Rasanya pengen nangis,<br>
+                            karena aku harus ketemu mamah dan ayahmu.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item scroll-fade" data-testid="timeline-item-5">
+                    <div class="timeline-content">
+                        <p class="timeline-text">
+                            Aku takut nggak cukup baik.<br>
+                            Takut nggak diterima.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item scroll-fade" data-testid="timeline-item-6">
+                    <div class="timeline-content">
+                        <p class="timeline-text">
+                            Tapi ternyata…<br>
+                            keluargamu baik ke aku.<br>
+                            Hangat.<br>
+                            Tulus.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item scroll-fade" data-testid="timeline-item-7">
+                    <div class="timeline-content">
+                        <p class="timeline-text">
+                            Di hari itu,<br>
+                            aku ngerasa seperti punya<br>
+                            <strong>keluarga kedua.</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item scroll-fade" data-testid="timeline-item-8">
+                    <div class="timeline-content">
+                        <p class="timeline-text">
+                            Dan sejak saat itu aku sadar,<br>
+                            bukan cuma kamu yang aku syukuri,<br>
+                            tapi juga semua yang datang bersamamu.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn-secondary" onclick="navigateWithTransition('about.html')" data-testid="btn-back">
+                    ← Kembali
+                </button>
+                <button class="btn-primary" onclick="navigateWithTransition('letter.html')" data-testid="btn-next">
+                    Baca Surat →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p class="loading-text" id="loadingText">Memuat...</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/music.js"></script>
+    <script src="assets/js/transition.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            continueMusic();
+            initScrollFade();
+        });
+    </script>
+</body>
+</html>

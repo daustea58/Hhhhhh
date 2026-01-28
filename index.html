@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Lixie 💙</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="page-index">
+    
+    <div class="music-control" id="musicControl">
+        <button id="musicToggle" class="music-btn" data-testid="music-toggle-btn">
+            <span id="musicIcon">🔊</span>
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="hero-content" data-testid="hero-content">
+            <div class="hero-text fade-in">
+                <h1 class="hero-title">Selamat Ulang Tahun</h1>
+                <h2 class="hero-name">Lixie 💙</h2>
+                <p class="hero-date">1 Februari 2003</p>
+                <p class="hero-subtitle">Ini bukan cuma hadiah,<br>ini ketulusan dari Ryzen</p>
+                
+                <button class="btn-primary" onclick="navigateWithTransition('about.html')" data-testid="start-journey-btn">
+                    Mulai Perjalanan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p class="loading-text" id="loadingText">Memuat...</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="musicPlayer" style="display: none;"></div>
+
+    <script src="assets/js/music.js"></script>
+    <script src="assets/js/transition.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                initMusic();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

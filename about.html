@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Lixie 💙</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="page-about">
+    
+    <div class="music-control" id="musicControl">
+        <button id="musicToggle" class="music-btn" data-testid="music-toggle-btn">
+            <span id="musicIcon">🔊</span>
+        </button>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" data-testid="nav-home">💙 Lixie</a>
+            <div class="nav-links">
+                <a href="about.html" class="nav-link active" data-testid="nav-about">Tentang</a>
+                <a href="story.html" class="nav-link" data-testid="nav-story">Cerita</a>
+                <a href="letter.html" class="nav-link" data-testid="nav-letter">Surat</a>
+                <a href="future.html" class="nav-link" data-testid="nav-future">Masa Depan</a>
+                <a href="fun.html" class="nav-link" data-testid="nav-fun">Fun</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="content-wrapper" data-testid="about-content">
+            <div class="page-header fade-in">
+                <h1 class="page-title">Tentang Kamu</h1>
+                <p class="page-subtitle">Orang yang paling aku syukuri</p>
+            </div>
+
+            <div class="about-card fade-in-delay">
+                <div class="about-info">
+                    <h2 class="about-name">Lixie</h2>
+                    <p class="about-detail">Lahir: 1 Februari 2003</p>
+                    <p class="about-detail">Pacar: Ryzen</p>
+                    <p class="about-detail">Hari Jadian: 22 Desember 2024</p>
+                    <p class="about-detail">Pertama Ketemu: 6 Juni</p>
+                </div>
+
+                <div class="about-message">
+                    <p>Setiap hari bersamamu adalah hari yang aku syukuri.</p>
+                    <p>Kamu bukan hanya pacarku, tapi juga rumah yang selalu aku pulang.</p>
+                    <p>Terima kasih sudah menerima aku apa adanya,<br>dan membuat hidupku jauh lebih indah.</p>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn-secondary" onclick="navigateWithTransition('index.html')" data-testid="btn-back">
+                    ← Kembali
+                </button>
+                <button class="btn-primary" onclick="navigateWithTransition('story.html')" data-testid="btn-next">
+                    Cerita Kita →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p class="loading-text" id="loadingText">Memuat...</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/music.js"></script>
+    <script src="assets/js/transition.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            continueMusic();
+        });
+    </script>
+</body>
+</html>

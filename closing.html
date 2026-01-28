@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terima Kasih 💙</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="page-closing">
+    
+    <div class="music-control" id="musicControl">
+        <button id="musicToggle" class="music-btn" data-testid="music-toggle-btn">
+            <span id="musicIcon">🔊</span>
+        </button>
+    </div>
+
+    <div class="closing-container" data-testid="closing-content">
+        <div class="closing-content cinematic-fade">
+            <h1 class="closing-title">Terima kasih</h1>
+            <div class="closing-message">
+                <p>Terima kasih sudah nerima aku,</p>
+                <p>dan keluargaku sebagai bagian dari hidupmu.</p>
+            </div>
+            <div class="closing-signature">
+                <p>Selamat ulang tahun, Lixie</p>
+                <p>Semoga kamu selalu bahagia</p>
+                <p class="closing-from">Dari Ryzen yang sangat sayang kamu 💙</p>
+            </div>
+            <button class="btn-restart" onclick="navigateWithTransition('index.html')" data-testid="btn-restart">
+                ← Kembali ke Awal
+            </button>
+        </div>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p class="loading-text" id="loadingText">Memuat...</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/music.js"></script>
+    <script src="assets/js/transition.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            continueMusic();
+            
+            setTimeout(() => {
+                document.querySelector('.cinematic-fade').style.opacity = '1';
+            }, 500);
+        });
+    </script>
+</body>
+</html>
