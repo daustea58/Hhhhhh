@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Lixie 💖</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="login-page">
+    <canvas id="heartsCanvas"></canvas>
+    
+    <div class="login-container">
+        <div class="login-card">
+            <h1 class="login-title">Happy Birthday 💖</h1>
+            <p class="login-subtitle">Masukkan tanggal spesial kita...</p>
+            
+            <div class="input-group">
+                <input type="password" id="passwordInput" placeholder="DD-MM-YYYY" data-testid="password-input">
+            </div>
+            
+            <button class="login-btn" onclick="checkPassword()" data-testid="login-button">
+                <span>Masuk</span>
+            </button>
+            
+            <p class="error-message" id="errorMessage" data-testid="error-message"></p>
+        </div>
+        
+        <div class="birthday-message hidden" id="birthdayMessage" data-testid="birthday-message">
+            <h2>Selamat Ulang Tahun, Lixie! 🎉</h2>
+            <p>Semoga hari ini penuh kebahagiaan, tawa, dan semua hal indah seperti hatiku tiap kali ingat kamu 💖</p>
+            <button class="continue-btn" onclick="goToMain()" data-testid="continue-button">Lanjutkan ✨</button>
+        </div>
+    </div>
+
+    <script src="js/animations.js"></script>
+    <script>
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value.toLowerCase().replace(/\s+/g, '');
+            const errorMsg = document.getElementById('errorMessage');
+            const loginCard = document.querySelector('.login-card');
+            const birthdayMessage = document.getElementById('birthdayMessage');
+            
+            // Valid password formats
+            const validPasswords = [
+                '22122024',
+                '22-12-2024',
+                '22/12/2024',
+                '2212-2024',
+                '22desember2024',
+                '22-desember-2024',
+                '22des2024'
+            ];
+            
+            if (validPasswords.some(pwd => input.includes(pwd.replace(/[-\/\s]/g, '')))) {
+                errorMsg.textContent = '';
+                errorMsg.classList.remove('show');
+                loginCard.classList.add('fade-out');
+                
+                setTimeout(() => {
+                    loginCard.style.display = 'none';
+                    birthdayMessage.classList.remove('hidden');
+                    birthdayMessage.classList.add('fade-in');
+                    triggerConfetti();
+                }, 500);
+            } else {
+                errorMsg.textContent = "Oops… coba inget lagi tanggal jadian kita 😏";
+                errorMsg.classList.add('show', 'shake');
+                setTimeout(() => errorMsg.classList.remove('shake'), 500);
+            }
+        }
+        
+        function goToMain() {
+            localStorage.setItem('authenticated', 'true');
+            window.location.href = 'home.html';
+        }
+        
+        // Enter key support
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') checkPassword();
+        });
+        
+        // Initialize floating hearts
+        initFloatingHearts('heartsCanvas');
+    </script>
+</body>
+</html>

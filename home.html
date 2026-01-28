@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Lixie 💖</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="main-page">
+    <canvas id="particlesCanvas"></canvas>
+    
+    <div class="container">
+        <header class="header">
+            <h1 class="main-title">Untuk Lixie 💖</h1>
+            <p class="subtitle">Dari Ryzen dengan cinta</p>
+        </header>
+
+        <!-- Music Player Section -->
+        <section class="section music-section" data-testid="music-section">
+            <h2 class="section-title">🎵 Pilih Musik Sesuai Mood</h2>
+            
+            <div class="music-categories">
+                <button class="category-btn active" onclick="showCategory('sedih')" data-testid="category-sedih">Sedih</button>
+                <button class="category-btn" onclick="showCategory('mood')" data-testid="category-mood">Mood</button>
+                <button class="category-btn" onclick="showCategory('semangat')" data-testid="category-semangat">Semangat</button>
+                <button class="category-btn" onclick="showCategory('favorit')" data-testid="category-favorit">Favorit</button>
+            </div>
+
+            <div class="music-grid" id="musicGrid" data-testid="music-grid"></div>
+
+            <div class="upload-section">
+                <label for="uploadMusic" class="upload-btn" data-testid="upload-music-label">
+                    Upload MP3 Sendiri 📁
+                </label>
+                <input type="file" id="uploadMusic" accept="audio/mp3,audio/mpeg" style="display: none;" data-testid="upload-music-input">
+            </div>
+
+            <div class="music-player hidden" id="musicPlayer" data-testid="music-player">
+                <div class="player-info">
+                    <p class="now-playing">Now Playing:</p>
+                    <p class="song-name" id="songName"></p>
+                </div>
+                <audio id="audioPlayer" controls data-testid="audio-player"></audio>
+            </div>
+        </section>
+
+        <!-- Love Question Section -->
+        <section class="section love-question-section" data-testid="love-question-section">
+            <h2 class="section-title">Kamu Sayang Aku Gak? 🥺</h2>
+            <div class="love-buttons">
+                <button class="love-btn yes-btn" onclick="handleYes()" data-testid="yes-button">Yes! 💖</button>
+                <button class="love-btn no-btn" id="noBtn" onclick="handleNo()" data-testid="no-button">No</button>
+            </div>
+            <p class="love-counter" id="loveCounter" data-testid="love-counter"></p>
+            <div class="love-response hidden" id="loveResponse" data-testid="love-response"></div>
+        </section>
+
+        <!-- Mood Slider Section -->
+        <section class="section mood-section" data-testid="mood-section">
+            <h2 class="section-title">Mood Kamu Hari Ini? 😊</h2>
+            <div class="slider-container">
+                <input type="range" min="0" max="100" value="50" class="mood-slider" id="moodSlider" data-testid="mood-slider">
+                <div class="mood-value" id="moodValue" data-testid="mood-value">50%</div>
+            </div>
+            <p class="mood-comment" id="moodComment" data-testid="mood-comment">Biasa aja nih kayanya...</p>
+        </section>
+
+        <!-- Love Meter Section -->
+        <section class="section love-meter-section" data-testid="love-meter-section">
+            <h2 class="section-title">Love Meter 💕</h2>
+            <div class="slider-container">
+                <input type="range" min="0" max="100" value="100" class="love-slider" id="loveSlider" data-testid="love-slider">
+                <div class="love-value" id="loveValue" data-testid="love-value">100%</div>
+            </div>
+            <div class="hearts-display" id="heartsDisplay" data-testid="hearts-display">
+                <span class="heart-icon">❤️</span>
+                <span class="heart-icon">❤️</span>
+                <span class="heart-icon">❤️</span>
+                <span class="heart-icon">❤️</span>
+                <span class="heart-icon">❤️</span>
+            </div>
+        </section>
+
+        <!-- Memory Section -->
+        <section class="section memory-section" data-testid="memory-section">
+            <h2 class="section-title">Kenangan Kita 📖</h2>
+            <div class="memory-card" data-testid="memory-card">
+                <div class="typewriter-text" id="memoryText" data-testid="memory-text"></div>
+                <button class="refresh-btn" onclick="loadRandomMemory()" data-testid="refresh-memory-button">Kenangan Lain ↻</button>
+            </div>
+        </section>
+
+        <!-- Magic Number Section -->
+        <section class="section magic-section" data-testid="magic-section">
+            <h2 class="section-title">🔮 Magic Number & Ramalan</h2>
+            <div class="magic-container">
+                <input type="number" id="magicNumber" placeholder="Angka favorit kamu..." class="magic-input" data-testid="magic-input">
+                <button class="magic-btn" onclick="getMagicPrediction()" data-testid="magic-button">Lihat Ramalan ✨</button>
+                <div class="magic-result hidden" id="magicResult" data-testid="magic-result"></div>
+            </div>
+        </section>
+
+        <!-- Gift Box Section -->
+        <section class="section gift-section" data-testid="gift-section">
+            <h2 class="section-title">🎁 Virtual Gift Box</h2>
+            <div class="gift-box" onclick="openGift()" id="giftBox" data-testid="gift-box">
+                <div class="gift-emoji">🎁</div>
+                <p>Klik untuk buka hadiah!</p>
+            </div>
+            <div class="gift-opened hidden" id="giftOpened" data-testid="gift-opened">
+                <div class="gift-content">
+                    <h3>Hadiah Spesial Untukmu! 💝</h3>
+                    <p>Cinta tanpa batas dari aku untuk kamu ❤️</p>
+                    <p class="gift-message">Setiap hari bersamamu adalah hadiah terindah 🎀</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section class="section timeline-section" data-testid="timeline-section">
+            <h2 class="section-title">📅 Memory Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item" onclick="showTimelineDetail(0)" data-testid="timeline-item-0">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>6 Juni 2025</h4>
+                        <p>Pertama Kali Ketemu</p>
+                    </div>
+                </div>
+                <div class="timeline-item" onclick="showTimelineDetail(1)" data-testid="timeline-item-1">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>22 Desember 2024</h4>
+                        <p>Hari Jadian Kita</p>
+                    </div>
+                </div>
+                <div class="timeline-item" onclick="showTimelineDetail(2)" data-testid="timeline-item-2">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>1 Februari 2025</h4>
+                        <p>Ulang Tahun Lixie</p>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-detail hidden" id="timelineDetail" data-testid="timeline-detail">
+                <button class="close-btn" onclick="closeTimelineDetail()" data-testid="close-timeline-button">✕</button>
+                <div class="timeline-detail-content" id="timelineDetailContent"></div>
+            </div>
+        </section>
+
+        <!-- Typewriter Message Section -->
+        <section class="section typewriter-section" data-testid="typewriter-section">
+            <h2 class="section-title">💌 Pesan Spesial</h2>
+            <div class="typewriter-container">
+                <div class="typewriter-message" id="typewriterMessage" data-testid="typewriter-message"></div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Made with 💖 by Ryzen for Lixie</p>
+            <p class="footer-date">1 Februari 2025</p>
+        </footer>
+    </div>
+
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <script src="js/animations.js"></script>
+    <script src="js/music-player.js"></script>
+    <script src="js/interactions.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        // Check authentication
+        if (!localStorage.getItem('authenticated')) {
+            window.location.href = 'index.html';
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', () => {
+            initParticles('particlesCanvas');
+            initMusicPlayer();
+            loadRandomMemory();
+            startTypewriterMessage();
+        });
+    </script>
+</body>
+</html>
